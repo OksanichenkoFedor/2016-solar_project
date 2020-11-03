@@ -24,7 +24,7 @@ def read_space_objects_data_from_file(input_filename):
                 parse_star_parameters(line, star)
                 objects.append(star)
             elif object_type == "planet":
-				planet = Planet()
+                planet = Planet()
                 parse_planet_parameters(line, planet)
                 objects.append(planet)
             else:
@@ -48,13 +48,13 @@ def parse_star_parameters(line, star):
     **star** — объект звезды.
     """
     star_param = line.split()
-    star.r = star_param[1]
+    star.r = int(star_param[1])
     star.color = star_param[2]
-    star.m =  star_param[3]
-    star.x = star_param[4]
-    star.y = star_param[5]
-    star.Vx  = star_param[6]
-    star.Vy = star_param[7]
+    star.m =  int(star_param[3])
+    star.x = int(star_param[4])
+    star.y = int(star_param[5])
+    star.Vx  = int(star_param[6])
+    star.Vy = int(star_param[7])
 
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
@@ -72,13 +72,13 @@ def parse_planet_parameters(line, planet):
     **planet** — объект планеты.
     """
     planet_param = line.split()
-    planet.r = planet_param[1]
+    planet.r = int(planet_param[1])
     planet.color = planet_param[2]
-    planet.m =  planet_param[3]
-    planet.x = planet_param[4]
-    planet.y = planet_param[5]
-    planet.Vx  = planet_param[6]
-    planet.Vy = planet_param[7]
+    planet.m =  int(planet_param[3])
+    planet.x = int(planet_param[4])
+    planet.y = int(planet_param[5])
+    planet.Vx  = int(planet_param[6])
+    planet.Vy = int(planet_param[7])
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
