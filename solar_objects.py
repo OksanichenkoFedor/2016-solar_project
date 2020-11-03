@@ -40,6 +40,21 @@ class Star:
 
     image = None
     """Изображение звезды"""
+    def move_space_object(self, dt):
+		"""Перемещает тело в соответствии с действующей на него силой.
+
+		Параметры:
+
+		**body** — тело, которое нужно переместить.
+		"""
+
+		ax = self.Fx/self.m
+		self.Vx += ax*dt
+		self.x += self.Vx * dt
+    
+		ay = self.Fy/self.m
+		self.Vy += ay*dt
+		self.y += self.Vy * dt
 
 
 class Planet:
@@ -80,3 +95,18 @@ class Planet:
 
     image = None
     """Изображение планеты"""
+    def move_space_object(self, dt):
+		"""Перемещает тело в соответствии с действующей на него силой.
+
+		Параметры:
+
+		**body** — тело, которое нужно переместить.
+		"""
+
+		ax = self.Fx/self.m
+		self.Vx += ax*dt
+		self.x += self.Vx * dt
+    
+		ay = self.Fy/self.m
+		self.Vy += ay*dt
+		self.y += self.Vy * dt
