@@ -25,7 +25,7 @@ def calculate_scale_factor(max_distance):
     """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
     global scale_factor
     scale_factor = 0.4*min(window_height, window_width)/max_distance
-    print('Scale factor:', scale_factor) #11
+    print('Scale factor:', scale_factor)
 
 
 def scale_x(x):
@@ -113,6 +113,7 @@ def update_object_position(space, body):
         space.coords(body.image, window_width + r, window_height + r,
                      window_width + 2*r, window_height + 2*r)  # положить за пределы окна
     space.coords(body.image, x - r, y - r, x + r, y + r)
+    return space
 
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 # coding: utf-8
 # license: GPLv3
 
+gravitational_constant = 6.67408E-11
+"""Гравитационная постоянная Ньютона G"""
 
 class Star:
     """Тип данных, описывающий звезду.
@@ -40,22 +42,32 @@ class Star:
 
     image = None
     """Изображение звезды"""
-    def move_space_object(self, dt):
-		"""Перемещает тело в соответствии с действующей на него силой.
 
-		Параметры:
+    def move(self, dt):
+        """Перемещает тело в соответствии с действующей на него силой.
 
-		**body** — тело, которое нужно переместить.
-		"""
+        Параметры:
 
-		ax = self.Fx/self.m
-		self.Vx += ax*dt
-		self.x += self.Vx * dt
-    
-		ay = self.Fy/self.m
-		self.Vy += ay*dt
-		self.y += self.Vy * dt
+        **body** — тело, которое нужно переместить.
+        """
+        ax = self.Fx / self.m
+        self.Vx += ax * dt
+        self.x += self.Vx * dt
 
+        ay = self.Fy / self.m
+        self.Vy += ay * dt
+        self.y += self.Vy * dt
+
+    def Force_Count(self, space_objects):
+        self.Fx = self.Fy = 0
+        for obj in space_objects:
+            if self == obj:
+                continue  # тело не действует гравитационной силой на само себя!
+            r = ((self.x - obj.x) ** 2 + (self.y - obj.y) ** 2) ** 0.5
+            modul_F = (gravitational_constant * self.m * obj.m) / r ** 2
+            self.Fx += modul_F * (obj.x - self.x) / r
+            self.Fy += modul_F * (obj.y - self.y) / r
+        print(self.x)
 
 class Planet:
     """Тип данных, описывающий планету.
@@ -95,18 +107,29 @@ class Planet:
 
     image = None
     """Изображение планеты"""
-    def move_space_object(self, dt):
-		"""Перемещает тело в соответствии с действующей на него силой.
 
-		Параметры:
+    def move(self, dt):
+        """Перемещает тело в соответствии с действующей на него силой.
 
-		**body** — тело, которое нужно переместить.
-		"""
+        Параметры:
 
-		ax = self.Fx/self.m
-		self.Vx += ax*dt
-		self.x += self.Vx * dt
-    
-		ay = self.Fy/self.m
-		self.Vy += ay*dt
-		self.y += self.Vy * dt
+        **body** — тело, которое нужно переместить.
+        """
+        ax = self.Fx / self.m
+        self.Vx += ax * dt
+        self.x += self.Vx * dt
+
+        ay = self.Fy / self.m
+        self.Vy += ay * dt
+        self.y += self.Vy * dt
+
+    def Force_Count(self, space_objects):
+        self.Fx = self.Fy = 0
+        for obj in space_objects:
+            if self == obj:
+                continue  # тело не действует гравитационной силой на само себя!
+            r = ((self.x - obj.x) ** 2 + (self.y - obj.y) ** 2) ** 0.5
+            modul_F = (gravitational_constant * self.m * obj.m) / r ** 2
+            self.Fx += modul_F * (obj.x - self.x) / r
+            self.Fy += modul_F * (obj.y - self.y) / r
+        print(self.x)
