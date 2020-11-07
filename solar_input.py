@@ -10,7 +10,7 @@ def read_space_objects_data_from_file(input_filename):
 
     Параметры:
 
-    **input_filename** — имя входного файла
+    **input_filename** — имя входного файла 
     """
     objects = []
     with open(input_filename) as input_file:
@@ -48,10 +48,10 @@ def parse_star_parameters(line, star):
     star_param = line.split()
     star.R = float(star_param[1])
     star.color = star_param[2]
-    star.m =  float(star_param[3])
+    star.m = float(star_param[3])
     star.x = float(star_param[4])
     star.y = float(star_param[5])
-    star.Vx  = float(star_param[6])
+    star.Vx = float(star_param[6])
     star.Vy = float(star_param[7])
 
 def parse_planet_parameters(line, planet):
@@ -72,10 +72,10 @@ def parse_planet_parameters(line, planet):
     planet_param = line.split()
     planet.R = float(planet_param[1])
     planet.color = planet_param[2]
-    planet.m =  float(planet_param[3])
+    planet.m = float(planet_param[3])
     planet.x = float(planet_param[4])
     planet.y = float(planet_param[5])
-    planet.Vx  = float(planet_param[6])
+    planet.Vx = float(planet_param[6])
     planet.Vy = float(planet_param[7])
 
 
@@ -94,7 +94,8 @@ def write_space_objects_data_to_file(output_filename, space_objects):
         for obj in space_objects:
             print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
             # FIXME: should store real values
-
+            planet_param = str(planet.R)+planet.color+str(planet.m)+str(planet.x)+str(planet.y)+str(planet.Vx)+str(planet.Vy)
+            star_param = str(star.R) + star.color + str(star.m) + str(star.x) + str(star.y) + str(star.Vx) + str(star.Vy)
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
 if __name__ == "__main__":
