@@ -92,11 +92,17 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME: should store real values
-            planet_param = str(planet.R) + ' ' + planet.color + ' ' + str(planet.m) + ' ' + str(planet.x) + ' ' + str(planet.y) + ' ' + str(planet.Vx) + ' ' + str(planet.Vy)
-            star_param = str(star.R) + ' ' + star.color + ' ' + str(star.m) + ' ' + str(star.x) + ' ' + str(star.y) + ' ' + str(star.Vx) + ' ' + str(star.Vy)
-# FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
+            obj_param_spisok = [0, 0, 0, 0, 0, 0, 0, 0]
+            obj_param_spisok[0] = obj.type
+            obj_param_spisok[1] = str(obj.R)
+            obj_param_spisok[2] = obj.color
+            obj_param_spisok[3] = str(obj.m)
+            obj_param_spisok[4] = str(round(obj.x, 3))
+            obj_param_spisok[5] = str(round(obj.y, 3))
+            obj_param_spisok[6] = str(round(obj.Vx, 3))
+            obj_param_spisok[7] = str(round(obj.Vy, 3))
+            obj_param = ' '.join(obj_param_spisok)
+            print(out_file, obj_param)
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
