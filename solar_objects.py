@@ -67,7 +67,6 @@ class Star:
             modul_F = (gravitational_constant * self.m * obj.m) / r ** 2
             self.Fx += modul_F * (obj.x - self.x) / r
             self.Fy += modul_F * (obj.y - self.y) / r
-        print(self.x)
 
 class Planet:
     """Тип данных, описывающий планету.
@@ -132,4 +131,3 @@ class Planet:
             modul_F = (gravitational_constant * self.m * obj.m) / r ** 2
             self.Fx += modul_F * (obj.x - self.x) / r
             self.Fy += modul_F * (obj.y - self.y) / r
-        print(self.x)

@@ -94,15 +94,17 @@ def write_space_objects_data_to_file(output_filename, space_objects):
         for obj in space_objects:
             obj_param_spisok = [0, 0, 0, 0, 0, 0, 0, 0]
             obj_param_spisok[0] = obj.type
-            obj_param_spisok[1] = str(obj.R)
+            obj_param_spisok[1] = str(round(obj.R,3))
             obj_param_spisok[2] = obj.color
-            obj_param_spisok[3] = str(obj.m)
+            obj_param_spisok[3] = str(round(obj.m,3))
             obj_param_spisok[4] = str(round(obj.x, 3))
             obj_param_spisok[5] = str(round(obj.y, 3))
             obj_param_spisok[6] = str(round(obj.Vx, 3))
             obj_param_spisok[7] = str(round(obj.Vy, 3))
             obj_param = ' '.join(obj_param_spisok)
             print(out_file, obj_param)
+            out_file.write(obj_param + "\n")
+        out_file.close()
 
 if __name__ == "__main__":
     print("This module is not for direct call!")
